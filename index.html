@@ -3,950 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern GitHub Pages Landing</title>
+    <title>ยินดีต้อนรับสู่เว็บไซต์ของเรา</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
-                        },
-                        accent: {
-                            50: '#fdf4ff',
-                            100: '#fae8ff',
-                            200: '#f5d0fe',
-                            300: '#f0abfc',
-                            400: '#e879f9',
-                            500: '#d946ef',
-                            600: '#c026d3',
-                            700: '#a21caf',
-                            800: '#86198f',
-                            900: '#701a75',
-                        },
-                        dark: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
-                        },
-                    },
-                    fontFamily: {
-                        'prompt': ['Prompt', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'spin-slow': 'spin 8s linear infinite',
-                        'wiggle': 'wiggle 1s ease-in-out infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        wiggle: {
-                            '0%, 100%': { transform: 'rotate(-3deg)' },
-                            '50%': { transform: 'rotate(3deg)' },
-                        },
-                        shimmer: {
-                            '0%': { backgroundPosition: '-1000px 0' },
-                            '100%': { backgroundPosition: '1000px 0' },
-                        },
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
         body {
-            font-family: 'Prompt', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Kanit', sans-serif;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 25%, #14b8a6 50%, #2dd4bf 75%, #5eead4 100%);
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
         .card-hover {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
+        }
+        
         .card-hover:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #0f766e, #a21caf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .blob {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation: blob-animation 8s ease-in-out infinite;
-        }
-        @keyframes blob-animation {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-        }
-        .custom-shape-divider-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-        .custom-shape-divider-bottom svg {
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+            transition: all 0.3s ease;
             position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 70px;
+            overflow: hidden;
         }
-        .custom-shape-divider-top {
+        
+        .btn-primary::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
         }
-        .custom-shape-divider-top svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 70px;
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
-        .shimmer {
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+        
         .glass-effect {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .glow {
-            box-shadow: 0 0 15px rgba(45, 212, 191, 0.5);
+        
+        .text-gradient {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .glow-accent {
-            box-shadow: 0 0 15px rgba(232, 121, 249, 0.5);
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
         }
-        .glow-text {
-            text-shadow: 0 0 10px rgba(45, 212, 191, 0.5);
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
-        .gradient-border {
-            position: relative;
-            border-radius: 0.75rem;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(to right, #0f766e, #a21caf) border-box;
-            border: 2px solid transparent;
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite alternate;
         }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            to { box-shadow: 0 0 40px rgba(102, 126, 234, 0.6); }
         }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        .noise-bg {
+        
+        .service-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 1px solid rgba(102, 126, 234, 0.1);
             position: relative;
         }
-        .noise-bg::before {
-            content: "";
+        
+        .service-card::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            pointer-events: none;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid rgba(255,255,255,0.75);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(255,255,255,0.75); }
         }
     </style>
 </head>
-<body class="bg-dark-950 text-white font-prompt">
+<body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="glass-effect sticky top-0 z-50 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <div class="h-10 w-10 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 flex items-center justify-center glow">
-                            <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                        </div>
-                        <span class="ml-3 text-xl font-bold text-white">DevHub<span class="text-brand-400">Pages</span></span>
+                    <div class="text-2xl font-bold text-gradient pulse-glow">✨ MyWebsite</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 hover:scale-110">หน้าแรก</a>
+                        <a href="#about" class="text-gray-700 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 hover:scale-110">เกี่ยวกับเรา</a>
+                        <a href="#services" class="text-gray-700 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 hover:scale-110">บริการ</a>
+                        <a href="#contact" class="text-gray-700 hover:text-purple-600 px-3 py-2 font-medium transition-all duration-300 hover:scale-110">ติดต่อ</a>
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <div class="flex space-x-6">
-                        <a href="#" class="px-3 py-2 text-sm font-medium text-white hover:text-brand-300 border-b-2 border-brand-500 transition-all duration-200">หน้าหลัก</a>
-                        <a href="#features" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-brand-300 hover:border-b-2 hover:border-brand-500 transition-all duration-200">คุณสมบัติ</a>
-                        <a href="#about" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-brand-300 hover:border-b-2 hover:border-brand-500 transition-all duration-200">เกี่ยวกับ</a>
-                        <a href="#contact" class="px-3 py-2 text-sm font-medium text-gray-300 hover:text-brand-300 hover:border-b-2 hover:border-brand-500 transition-all duration-200">ติดต่อ</a>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <a href="#" class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full text-dark-900 bg-brand-400 hover:bg-brand-500 transition-all duration-300 transform hover:scale-105 mr-4">
-                        เข้าสู่ระบบ
-                    </a>
-                    <button id="mobile-menu-button" class="sm:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-dark-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
-
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="sm:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 bg-dark-900/90 backdrop-blur-lg rounded-b-lg">
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-dark-800">หน้าหลัก</a>
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-brand-300 hover:bg-dark-800">คุณสมบัติ</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-brand-300 hover:bg-dark-800">เกี่ยวกับ</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-brand-300 hover:bg-dark-800">ติดต่อ</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-dark-900 bg-brand-400 hover:bg-brand-500 mt-4">เข้าสู่ระบบ</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-md border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">หน้าแรก</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">เกี่ยวกับเรา</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">บริการ</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors">ติดต่อ</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="relative overflow-hidden bg-dark-900 grid-pattern noise-bg">
-        <div class="absolute top-0 left-0 w-full h-full">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-500/20 rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32 relative z-10">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                    <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-700 mb-6">
-                        <span class="h-2 w-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
-                        <span class="text-xs font-medium text-brand-300">เปิดตัวแล้ววันนี้</span>
-                    </div>
-                    <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                        <span class="block mb-2">สร้างโปรเจกต์ของคุณ</span>
-                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400 glow-text">บน GitHub Pages</span>
-                    </h1>
-                    <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                        เริ่มต้นสร้างเว็บไซต์ของคุณด้วย TailwindCSS และ GitHub Pages อย่างง่ายดาย เพื่อแสดงผลงานและโปรเจกต์ของคุณให้โลกได้เห็น ด้วยดีไซน์ที่ทันสมัยและเป็นมืออาชีพ
-                    </p>
-                    <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left">
-                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                            <div class="rounded-md shadow">
-                                <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-dark-900 bg-gradient-to-r from-brand-400 to-brand-500 hover:from-brand-500 hover:to-brand-600 md:py-4 md:text-lg md:px-10 transition-all duration-300 transform hover:scale-105 glow">
-                                    <span>เริ่มต้นใช้งาน</span>
-                                    <svg class="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-brand-500 text-base font-medium rounded-full text-brand-300 bg-transparent hover:bg-brand-900/30 md:py-4 md:text-lg md:px-10 transition-all duration-300 transform hover:scale-105">
-                                    <svg class="mr-2 -ml-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                    </svg>
-                                    ดูวิดีโอสาธิต
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-10 flex items-center justify-center lg:justify-start space-x-6">
-                        <div class="flex -space-x-2">
-                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-dark-900" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23f472b6'/%3E%3Cpath d='M8 14s1.5 2 4 2 4-2 4-2' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='9' cy='9' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='15' cy='9' r='1.5' fill='%23ffffff'/%3E%3C/svg%3E" alt="">
-                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-dark-900" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Ccircle cx='12' cy='12' r='12' fill='%2334d399'/%3E%3Cpath d='M8 14s1.5 2 4 2 4-2 4-2' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='9' cy='9' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='15' cy='9' r='1.5' fill='%23ffffff'/%3E%3C/svg%3E" alt="">
-                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-dark-900" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='32' height='32'%3E%3Ccircle cx='12' cy='12' r='12' fill='%2360a5fa'/%3E%3Cpath d='M8 14s1.5 2 4 2 4-2 4-2' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='9' cy='9' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='15' cy='9' r='1.5' fill='%23ffffff'/%3E%3C/svg%3E" alt="">
-                        </div>
-                        <span class="text-sm text-gray-400">
-                            <span class="font-semibold text-white">1,000+</span> นักพัฒนาใช้งานแล้ว
-                        </span>
-                    </div>
-                </div>
-                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                    <div class="relative mx-auto w-full rounded-lg lg:max-w-md animate-float">
-                        <div class="relative block w-full overflow-hidden">
-                            <div class="bg-gradient-to-br from-brand-400 to-accent-500 p-1 rounded-2xl glow">
-                                <div class="bg-dark-900 p-6 rounded-xl">
-                                    <div class="flex items-center justify-between mb-6">
-                                        <div class="flex space-x-2">
-                                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <div class="w-4 h-4 rounded-full bg-brand-500 flex items-center justify-center">
-                                                <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="text-xs text-brand-400 font-medium">index.html</div>
-                                        </div>
-                                    </div>
-                                    <div class="space-y-3">
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">1</div>
-                                            <div class="text-sm text-brand-300">&lt;<span class="text-accent-400">html</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">2</div>
-                                            <div class="text-sm pl-4 text-brand-300">&lt;<span class="text-accent-400">head</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">3</div>
-                                            <div class="text-sm pl-8 text-brand-300">&lt;<span class="text-accent-400">title</span>&gt;<span class="text-gray-300">My GitHub Page</span>&lt;/<span class="text-accent-400">title</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">4</div>
-                                            <div class="text-sm pl-8 text-brand-300">&lt;<span class="text-accent-400">link</span> <span class="text-brand-400">rel</span>=<span class="text-green-400">"stylesheet"</span> <span class="text-brand-400">href</span>=<span class="text-green-400">"style.css"</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">5</div>
-                                            <div class="text-sm pl-4 text-brand-300">&lt;/<span class="text-accent-400">head</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">6</div>
-                                            <div class="text-sm pl-4 text-brand-300">&lt;<span class="text-accent-400">body</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">7</div>
-                                            <div class="text-sm pl-8 text-brand-300">&lt;<span class="text-accent-400">h1</span>&gt;<span class="text-gray-300">Hello World!</span>&lt;/<span class="text-accent-400">h1</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">8</div>
-                                            <div class="text-sm pl-4 text-brand-300">&lt;/<span class="text-accent-400">body</span>&gt;</div>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-10 text-xs text-gray-500 text-right pr-2">9</div>
-                                            <div class="text-sm text-brand-300">&lt;/<span class="text-accent-400">html</span>&gt;</div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6 flex justify-between items-center">
-                                        <div class="text-xs text-gray-400">9 lines • HTML</div>
-                                        <div class="flex space-x-2">
-                                            <div class="h-6 w-6 rounded-md bg-dark-800 flex items-center justify-center">
-                                                <svg class="h-3 w-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="h-6 w-6 rounded-md bg-dark-800 flex items-center justify-center">
-                                                <svg class="h-3 w-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section id="home" class="gradient-bg text-white py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="floating-animation">
+                <h1 class="text-6xl md:text-8xl font-bold mb-8 typing-animation">ยินดีต้อนรับสู่อนาคต</h1>
+            </div>
+            <p class="text-xl md:text-3xl mb-12 opacity-90 max-w-4xl mx-auto leading-relaxed">เราสร้างประสบการณ์ดิจิทัลที่น่าประทับใจและมีประสิทธิภาพ พร้อมนำพาธุรกิจของคุณสู่ความสำเร็จ</p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button class="btn-primary text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-transform shadow-2xl">
+                    🚀 เริ่มต้นเลย
+                </button>
+                <button class="glass-effect text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 transition-all duration-300 hover:bg-white/20">
+                    📖 เรียนรู้เพิ่มเติม
+                </button>
             </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#0f172a" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-    </div>
-
-    <!-- Brands Section -->
-    <div class="bg-dark-950 py-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-sm font-medium text-gray-500 mb-8">เชื่อถือได้โดยบริษัทชั้นนำทั่วโลก</p>
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-6">
-                <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <svg class="h-8 text-gray-500" viewBox="0 0 100 30" fill="currentColor">
-                        <path d="M5.7 10.9h4.2v12.6H5.7V10.9zm2.1-6.7c1.3 0 2.4 1.1 2.4 2.4s-1.1 2.4-2.4 2.4-2.4-1.1-2.4-2.4 1.1-2.4 2.4-2.4zm12.1 6.7h4v1.8c.7-1.1 2-2.1 4.1-2.1 4.2 0 5 2.8 5 6.4v6.5h-4.2v-5.7c0-2.3-.4-3.5-2.2-3.5-2.2 0-2.7 1.6-2.7 3.5v5.7h-4.2V10.9h.2zm21.3 0h4v1.8c.7-1.1 2-2.1 4.1-2.1 4.2 0 5 2.8 5 6.4v6.5h-4.2v-5.7c0-2.3-.4-3.5-2.2-3.5-2.2 0-2.7 1.6-2.7 3.5v5.7h-4.2V10.9h.2zm20.8 0h4.2v12.6h-4.2V10.9zm2.1-6.7c1.3 0 2.4 1.1 2.4 2.4s-1.1 2.4-2.4 2.4-2.4-1.1-2.4-2.4 1.1-2.4 2.4-2.4zm12.1 6.7h4v1.8c.7-1.1 2-2.1 4.1-2.1 4.2 0 5 2.8 5 6.4v6.5h-4.2v-5.7c0-2.3-.4-3.5-2.2-3.5-2.2 0-2.7 1.6-2.7 3.5v5.7h-4.2V10.9h.2z"/>
-                    </svg>
-                </div>
-                <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <svg class="h-8 text-gray-500" viewBox="0 0 100 30" fill="currentColor">
-                        <path d="M22.5 7.9c-3.2 0-5.8 2.6-5.8 5.8s2.6 5.8 5.8 5.8 5.8-2.6 5.8-5.8-2.6-5.8-5.8-5.8zm0 9.6c-2.1 0-3.8-1.7-3.8-3.8s1.7-3.8 3.8-3.8 3.8 1.7 3.8 3.8-1.7 3.8-3.8 3.8zm7.4-9.9h-1.9v7.2h1.9v-7.2zm-1-3.2c0-.7.6-1.2 1.2-1.2.7 0 1.2.6 1.2 1.2 0 .7-.6 1.2-1.2 1.2-.7.1-1.2-.5-1.2-1.2zm10.5 5.1c-1.2 0-2.1.6-2.6 1.5v-1.3h-1.9v7.2h1.9v-3.8c0-1.6.9-2.4 2.1-2.4 1.1 0 1.7.7 1.7 2v4.2h1.9v-4.5c.1-2.1-1.1-3-3.1-2.9zm10.6 7.2c2.1 0 3.5-1 3.5-2.6 0-3.3-4.6-2-4.6-3.3 0-.5.4-.8 1.2-.8.8 0 1.5.3 2.2.8l.8-1.4c-.8-.6-1.8-.9-2.9-.9-1.9 0-3.2 1-3.2 2.5 0 3.2 4.6 1.9 4.6 3.3 0 .6-.5.9-1.3.9-.9 0-1.8-.4-2.5-1l-.9 1.4c.9.7 2.1 1.1 3.1 1.1zm9.7 0c.8 0 1.4-.1 1.8-.3l-.3-1.5c-.2.1-.5.2-.9.2-.8 0-1.1-.5-1.1-1.2v-3h2.1V9.4h-2.1V7.1l-1.9.6v1.8h-1.4v1.5h1.4v3.4c0 1.6.8 2.4 2.4 2.4zm7.9 0c2.1 0 3.5-1 3.5-2.6 0-3.3-4.6-2-4.6-3.3 0-.5.4-.8 1.2-.8.8 0 1.5.3 2.2.8l.8-1.4c-.8-.6-1.8-.9-2.9-.9-1.9 0-3.2 1-3.2 2.5 0 3.2 4.6 1.9 4.6 3.3 0 .6-.5.9-1.3.9-.9 0-1.8-.4-2.5-1l-.9 1.4c.9.7 2.1 1.1 3.1 1.1zm9.1 0c1.1 0 2.2-.4 2.9-1.1l-.9-1.2c-.5.5-1.2.8-1.9.8-1.2 0-2.1-.9-2.1-2.3s.9-2.3 2.1-2.3c.7 0 1.3.3 1.9.8l.9-1.2c-.7-.7-1.8-1.1-2.9-1.1-2.3 0-4 1.6-4 3.9.1 2.1 1.8 3.7 4 3.7z"/>
-                    </svg>
-                </div>
-                <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                    <svg class="h-8 text-gray-500" viewBox="0 0 100 30" fill="currentColor">
-                        <path d="M15.2 9.8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm2.4-3.2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm2.4-3.2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm12.8-1.2c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3z"/>
-                    </svg>
-                </div>
-                <div class="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                    <svg class="h-8 text-gray-500" viewBox="0 0 100 30" fill="currentColor">
-                        <path d="M15.2 9.8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm2.4-3.2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm2.4-3.2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 3.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm12.8-1.2c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3zm9.7 0c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4zm-1.7 0c0-1.3-1-2.3-2.3-2.3s-2.3 1-2.3 2.3 1 2.3 2.3 2.3 2.3-1 2.3-2.3z"/>
-                    </svg>
-                </div>
-                <div class="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-                    <svg class="h-8 text-gray-500" viewBox="0 0 100 30" fill="currentColor">
-                        <path d="M22.5 7.9c-3.2 0-5.8 2.6-5.8 5.8s2.6 5.8 5.8 5.8 5.8-2.6 5.8-5.8-2.6-5.8-5.8-5.8zm0 9.6c-2.1 0-3.8-1.7-3.8-3.8s1.7-3.8 3.8-3.8 3.8 1.7 3.8 3.8-1.7 3.8-3.8 3.8zm7.4-9.9h-1.9v7.2h1.9v-7.2zm-1-3.2c0-.7.6-1.2 1.2-1.2.7 0 1.2.6 1.2 1.2 0 .7-.6 1.2-1.2 1.2-.7.1-1.2-.5-1.2-1.2zm10.5 5.1c-1.2 0-2.1.6-2.6 1.5v-1.3h-1.9v7.2h1.9v-3.8c0-1.6.9-2.4 2.1-2.4 1.1 0 1.7.7 1.7 2v4.2h1.9v-4.5c.1-2.1-1.1-3-3.1-2.9zm10.6 7.2c2.1 0 3.5-1 3.5-2.6 0-3.3-4.6-2-4.6-3.3 0-.5.4-.8 1.2-.8.8 0 1.5.3 2.2.8l.8-1.4c-.8-.6-1.8-.9-2.9-.9-1.9 0-3.2 1-3.2 2.5 0 3.2 4.6 1.9 4.6 3.3 0 .6-.5.9-1.3.9-.9 0-1.8-.4-2.5-1l-.9 1.4c.9.7 2.1 1.1 3.1 1.1zm9.7 0c.8 0 1.4-.1 1.8-.3l-.3-1.5c-.2.1-.5.2-.9.2-.8 0-1.1-.5-1.1-1.2v-3h2.1V9.4h-2.1V7.1l-1.9.6v1.8h-1.4v1.5h1.4v3.4c0 1.6.8 2.4 2.4 2.4zm7.9 0c2.1 0 3.5-1 3.5-2.6 0-3.3-4.6-2-4.6-3.3 0-.5.4-.8 1.2-.8.8 0 1.5.3 2.2.8l.8-1.4c-.8-.6-1.8-.9-2.9-.9-1.9 0-3.2 1-3.2 2.5 0 3.2 4.6 1.9 4.6 3.3 0 .6-.5.9-1.3.9-.9 0-1.8-.4-2.5-1l-.9 1.4c.9.7 2.1 1.1 3.1 1.1zm9.1 0c1.1 0 2.2-.4 2.9-1.1l-.9-1.2c-.5.5-1.2.8-1.9.8-1.2 0-2.1-.9-2.1-2.3s.9-2.3 2.1-2.3c.7 0 1.3.3 1.9.8l.9-1.2c-.7-.7-1.8-1.1-2.9-1.1-2.3 0-4 1.6-4 3.9.1 2.1 1.8 3.7 4 3.7z"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Section -->
-    <div id="features" class="py-24 bg-dark-950 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-700 mb-6">
-                    <span class="text-xs font-medium text-brand-300">คุณสมบัติเด่น</span>
-                </div>
-                <h2 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400">ทำไมต้องใช้ GitHub Pages</span>
-                </h2>
-                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    เรียนรู้ประโยชน์ของการใช้ GitHub Pages สำหรับโปรเจกต์ของคุณ
-                </p>
-            </div>
-
-            <div class="mt-20">
-                <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="relative animate-on-scroll">
-                        <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative bg-dark-800 p-8 rounded-2xl shadow-xl card-hover border border-dark-700">
-                            <div class="w-16 h-16 rounded-full bg-brand-900/50 border border-brand-700 flex items-center justify-center mb-6">
-                                <svg class="h-8 w-8 text-brand-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">ฟรี 100%</h3>
-                            <p class="text-gray-400">
-                                GitHub Pages ให้บริการฟรีสำหรับทุกคน ไม่มีค่าใช้จ่ายในการโฮสต์เว็บไซต์สถิต ไม่มีข้อจำกัดในการใช้งานสำหรับโปรเจกต์ส่วนตัวหรือองค์กร
-                            </p>
-                            <div class="mt-6">
-                                <a href="#" class="inline-flex items-center text-brand-400 hover:text-brand-300">
-                                    <span>เรียนรู้เพิ่มเติม</span>
-                                    <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative animate-on-scroll" style="transition-delay: 200ms;">
-                        <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative bg-dark-800 p-8 rounded-2xl shadow-xl card-hover border border-dark-700">
-                            <div class="w-16 h-16 rounded-full bg-accent-900/50 border border-accent-700 flex items-center justify-center mb-6">
-                                <svg class="h-8 w-8 text-accent-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">ง่ายต่อการใช้งาน</h3>
-                            <p class="text-gray-400">
-                                เพียงแค่อัปโหลดไฟล์ HTML, CSS และ JavaScript ของคุณไปยัง GitHub repository และเปิดใช้งาน GitHub Pages ในการตั้งค่า
-                            </p>
-                            <div class="mt-6">
-                                <a href="#" class="inline-flex items-center text-accent-400 hover:text-accent-300">
-                                    <span>เรียนรู้เพิ่มเติม</span>
-                                    <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative animate-on-scroll" style="transition-delay: 400ms;">
-                        <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                        <div class="relative bg-dark-800 p-8 rounded-2xl shadow-xl card-hover border border-dark-700">
-                            <div class="w-16 h-16 rounded-full bg-brand-900/50 border border-brand-700 flex items-center justify-center mb-6">
-                                <svg class="h-8 w-8 text-brand-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">อัปเดตอัตโนมัติ</h3>
-                            <p class="text-gray-400">
-                                เว็บไซต์ของคุณจะอัปเดตโดยอัตโนมัติทุกครั้งที่คุณ push การเปลี่ยนแปลงไปยัง GitHub repository ของคุณ
-                            </p>
-                            <div class="mt-6">
-                                <a href="#" class="inline-flex items-center text-brand-400 hover:text-brand-300">
-                                    <span>เรียนรู้เพิ่มเติม</span>
-                                    <svg class="ml-2 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Stats Section -->
-    <div class="bg-dark-900 py-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <div class="bg-dark-800 rounded-2xl p-8 text-center shadow-lg transform transition-all duration-300 hover:scale-105 border border-dark-700">
-                    <div class="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-300">100%</div>
-                    <div class="text-xl text-gray-300">ฟรี</div>
-                </div>
-                <div class="bg-dark-800 rounded-2xl p-8 text-center shadow-lg transform transition-all duration-300 hover:scale-105 border border-dark-700">
-                    <div class="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-300">24/7</div>
-                    <div class="text-xl text-gray-300">ออนไลน์</div>
-                </div>
-                <div class="bg-dark-800 rounded-2xl p-8 text-center shadow-lg transform transition-all duration-300 hover:scale-105 border border-dark-700">
-                    <div class="text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400">1GB</div>
-                    <div class="text-xl text-gray-300">พื้นที่จัดเก็บ</div>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 text-6xl opacity-20 floating-animation" style="animation-delay: -2s;">💫</div>
+        <div class="absolute top-40 right-20 text-4xl opacity-30 floating-animation" style="animation-delay: -4s;">⭐</div>
+        <div class="absolute bottom-20 left-20 text-5xl opacity-25 floating-animation" style="animation-delay: -1s;">✨</div>
+        <div class="absolute bottom-40 right-10 text-3xl opacity-35 floating-animation" style="animation-delay: -3s;">🌟</div>
+    </section>
 
     <!-- About Section -->
-    <div id="about" class="py-24 bg-dark-950 overflow-hidden relative">
-        <div class="absolute left-0 top-0 w-full h-full overflow-hidden opacity-10">
-            <div class="absolute blob w-96 h-96 bg-brand-500 -top-20 -left-20"></div>
-            <div class="absolute blob w-96 h-96 bg-accent-500 bottom-20 right-10"></div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-700 mb-6">
-                    <span class="text-xs font-medium text-brand-300">เกี่ยวกับ</span>
-                </div>
-                <h2 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400">เกี่ยวกับโปรเจกต์นี้</span>
-                </h2>
-                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    เรียนรู้เพิ่มเติมเกี่ยวกับการใช้ TailwindCSS กับ GitHub Pages
-                </p>
+    <section id="about" class="py-32 bg-gradient-to-br from-white to-purple-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-bold text-gradient mb-6">เกี่ยวกับเรา</h2>
+                <p class="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">เราเป็นทีมที่มีความหลงใหลในการสร้างสรรค์และนวัตกรรม พร้อมที่จะช่วยให้ธุรกิจของคุณเติบโตในยุคดิจิทัล</p>
             </div>
-
-            <div class="mt-20">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
-                    <div class="relative animate-on-scroll">
-                        <div class="relative mx-auto w-full rounded-2xl shadow-xl overflow-hidden">
-                            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-brand-500 to-accent-500 p-1 rounded-2xl glow">
-                                <div class="bg-dark-800 p-6 rounded-xl h-full">
-                                    <div class="flex flex-col h-full">
-                                        <div class="flex items-center justify-between mb-6">
-                                            <div class="flex space-x-2">
-                                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                            </div>
-                                            <div class="flex items-center space-x-2">
-                                                <div class="w-4 h-4 rounded-full bg-brand-500 flex items-center justify-center">
-                                                    <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </div>
-                                                <div class="text-xs text-brand-400 font-medium">style.css</div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow flex items-center justify-center">
-                                            <div class="text-left w-full">
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">1</div>
-                                                    <div class="text-sm text-brand-300">.<span class="text-accent-400">container</span> {</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">2</div>
-                                                    <div class="text-sm pl-4 text-gray-300">width: 100%;</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">3</div>
-                                                    <div class="text-sm pl-4 text-gray-300">max-width: 1200px;</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">4</div>
-                                                    <div class="text-sm pl-4 text-gray-300">margin: 0 auto;</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">5</div>
-                                                    <div class="text-sm text-brand-300">}</div>
-                                                </div>
-                                                <div class="flex items-center mt-4">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">6</div>
-                                                    <div class="text-sm text-brand-300">.<span class="text-accent-400">gradient</span> {</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">7</div>
-                                                    <div class="text-sm pl-4 text-gray-300">background: linear-gradient(90deg, #14b8a6, #a21caf);</div>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <div class="w-10 text-xs text-gray-500 text-right pr-2">8</div>
-                                                    <div class="text-sm text-brand-300">}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-6 flex justify-between items-center">
-                                            <div class="text-xs text-gray-400">8 lines • CSS</div>
-                                            <div class="flex space-x-2">
-                                                <div class="h-6 w-6 rounded-md bg-dark-700 flex items-center justify-center">
-                                                    <svg class="h-3 w-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                    </svg>
-                                                </div>
-                                                <div class="h-6 w-6 rounded-md bg-dark-700 flex items-center justify-center">
-                                                    <svg class="h-3 w-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-500/20 rounded-full"></div>
-                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-accent-500/20 rounded-full"></div>
-                    </div>
-                    <div class="mt-10 lg:mt-0">
-                        <div class="space-y-10">
-                            <div class="relative animate-on-scroll" style="transition-delay: 200ms;">
-                                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-lg blur opacity-30 transition duration-1000"></div>
-                                <div class="relative bg-dark-800 p-6 rounded-lg shadow-md border border-dark-700">
-                                    <h3 class="text-xl font-bold text-white mb-3">TailwindCSS</h3>
-                                    <p class="text-gray-400">
-                                        TailwindCSS เป็น utility-first CSS framework ที่ช่วยให้คุณสร้างการออกแบบที่กำหนดเองได้อย่างรวดเร็วโดยไม่ต้องออกจาก HTML ของคุณ ช่วยให้การพัฒนาเว็บไซต์เป็นไปอย่างรวดเร็วและมีประสิทธิภาพ
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="relative animate-on-scroll" style="transition-delay: 400ms;">
-                                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-lg blur opacity-30 transition duration-1000"></div>
-                                <div class="relative bg-dark-800 p-6 rounded-lg shadow-md border border-dark-700">
-                                    <h3 class="text-xl font-bold text-white mb-3">GitHub Pages</h3>
-                                    <p class="text-gray-400">
-                                        GitHub Pages เป็นบริการโฮสติ้งสำหรับเว็บไซต์สถิตที่ดึงไฟล์ HTML, CSS และ JavaScript โดยตรงจาก GitHub repository ของคุณ ทำให้การเผยแพร่เว็บไซต์เป็นเรื่องง่าย
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="relative animate-on-scroll" style="transition-delay: 600ms;">
-                                <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-500 rounded-lg blur opacity-30 transition duration-1000"></div>
-                                <div class="relative bg-dark-800 p-6 rounded-lg shadow-md border border-dark-700">
-                                    <h3 class="text-xl font-bold text-white mb-3">การเริ่มต้น</h3>
-                                    <p class="text-gray-400">
-                                        เริ่มต้นด้วยการสร้าง repository ใหม่บน GitHub จากนั้นอัปโหลดไฟล์ของคุณและเปิดใช้งาน GitHub Pages ในการตั้งค่า repository เพียงเท่านี้คุณก็มีเว็บไซต์ออนไลน์แล้ว
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center card-hover bg-white p-10 rounded-3xl shadow-xl">
+                    <div class="text-6xl mb-6 floating-animation">🎯</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">เป้าหมายชัดเจน</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">เราเข้าใจความต้องการของลูกค้าและมุ่งมั่นที่จะส่งมอบผลลัพธ์ที่เกินความคาดหวัง</p>
+                </div>
+                <div class="text-center card-hover bg-white p-10 rounded-3xl shadow-xl">
+                    <div class="text-6xl mb-6 floating-animation" style="animation-delay: -1s;">💡</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">นวัตกรรม</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">เราใช้เทคโนโลยีล่าสุดและแนวคิดสร้างสรรค์เพื่อสร้างโซลูชันที่ไม่เหมือนใคร</p>
+                </div>
+                <div class="text-center card-hover bg-white p-10 rounded-3xl shadow-xl">
+                    <div class="text-6xl mb-6 floating-animation" style="animation-delay: -2s;">🤝</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">ความร่วมมือ</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed">เราทำงานร่วมกับลูกค้าอย่างใกล้ชิดเพื่อให้แน่ใจว่าทุกโปรเจกต์ประสบความสำเร็จ</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Testimonials -->
-    <div class="bg-dark-900 py-24 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full grid-pattern"></div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-700 mb-6">
-                    <span class="text-xs font-medium text-brand-300">ความคิดเห็น</span>
-                </div>
-                <h2 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400">ผู้ใช้พูดถึงเรา</span>
-                </h2>
-                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    ความคิดเห็นจากนักพัฒนาที่ใช้ GitHub Pages
-                </p>
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-gradient-to-br from-gray-50 to-blue-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-bold text-gradient mb-6">บริการของเรา</h2>
+                <p class="text-2xl text-gray-600 max-w-4xl mx-auto">เราให้บริการที่หลากหลายเพื่อตอบสนองความต้องการของธุรกิจยุคใหม่</p>
             </div>
-
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-                <div class="bg-dark-800 rounded-2xl p-8 shadow-lg border border-dark-700 animate-on-scroll">
-                    <div class="flex items-center mb-6">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 flex items-center justify-center text-white font-bold text-xl">
-                            ส
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="text-lg font-semibold text-white">สมชาย ใจดี</h4>
-                            <p class="text-sm text-gray-400">นักพัฒนาเว็บ</p>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="flex text-yellow-400">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"GitHub Pages ทำให้การเผยแพร่เว็บไซต์ของผมเป็นเรื่องง่าย ไม่ต้องกังวลเรื่องค่าใช้จ่ายและการตั้งค่าเซิร์ฟเวอร์ที่ซับซ้อน"</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation">🌐</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">พัฒนาเว็บไซต์</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">สร้างเว็บไซต์ที่สวยงาม ใช้งานง่าย และตอบสนองได้ดีในทุกอุปกรณ์</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
                 </div>
-
-                <div class="bg-dark-800 rounded-2xl p-8 shadow-lg border border-dark-700 animate-on-scroll" style="transition-delay: 200ms;">
-                    <div class="flex items-center mb-6">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 flex items-center justify-center text-white font-bold text-xl">
-                            ว
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="text-lg font-semibold text-white">วิภา รักเรียน</h4>
-                            <p class="text-sm text-gray-400">นักศึกษา</p>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="flex text-yellow-400">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"ฉันใช้ GitHub Pages สำหรับโปรเจกต์ในมหาวิทยาลัย ช่วยให้ฉันสามารถแสดงผลงานให้อาจารย์และเพื่อนๆ ได้อย่างง่ายดาย"</p>
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation" style="animation-delay: -1s;">📱</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">แอปพลิเคชัน</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">พัฒนาแอปมือถือที่ใช้งานง่ายและมีประสิทธิภาพสูง</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
                 </div>
-
-                <div class="bg-dark-800 rounded-2xl p-8 shadow-lg border border-dark-700 animate-on-scroll" style="transition-delay: 400ms;">
-                    <div class="flex items-center mb-6">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 flex items-center justify-center text-white font-bold text-xl">
-                            ป
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="text-lg font-semibold text-white">ประเสริฐ นวัตกรรม</h4>
-                            <p class="text-sm text-gray-400">ผู้ประกอบการ</p>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div class="flex text-yellow-400">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"ผมใช้ GitHub Pages เพื่อสร้าง Landing Page สำหรับสตาร์ทอัพของผม ประหยัดเวลาและค่าใช้จ่ายได้มาก"</p>
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation" style="animation-delay: -2s;">🎨</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">ออกแบบ UI/UX</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">ออกแบบประสบการณ์ผู้ใช้ที่น่าประทับใจและใช้งานง่าย</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
+                </div>
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation" style="animation-delay: -3s;">📊</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">การตลาดดิจิทัล</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">วางกลยุทธ์การตลาดออนไลน์ที่มีประสิทธิภาพ</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
+                </div>
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation" style="animation-delay: -4s;">☁️</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">คลาวด์เซอร์วิส</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">จัดการและปรับปรุงระบบคลาวด์ให้มีประสิทธิภาพสูงสุด</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
+                </div>
+                <div class="service-card p-10 rounded-3xl shadow-xl card-hover">
+                    <div class="text-5xl mb-6 floating-animation" style="animation-delay: -5s;">🔒</div>
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800">ความปลอดภัย</h3>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">ปกป้องข้อมูลและระบบของคุณด้วยมาตรฐานความปลอดภัยสูงสุด</p>
+                    <button class="text-purple-600 font-bold hover:text-purple-800 transition-all duration-300 text-lg hover:scale-110">เรียนรู้เพิ่มเติม →</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Contact Section -->
-    <div id="contact" class="py-24 bg-dark-950 overflow-hidden relative">
-        <div class="absolute top-0 left-0 w-full h-full">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-900/50 border border-brand-700 mb-6">
-                    <span class="text-xs font-medium text-brand-300">ติดต่อ</span>
-                </div>
-                <h2 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-400">ติดต่อเรา</span>
-                </h2>
-                <p class="max-w-xl mt-5 mx-auto text-xl text-gray-400">
-                    มีคำถามหรือข้อเสนอแนะ? ติดต่อเราได้ที่นี่
-                </p>
+    <section id="contact" class="py-32 bg-gradient-to-br from-white to-pink-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-bold text-gradient mb-6">ติดต่อเรา</h2>
+                <p class="text-2xl text-gray-600 max-w-4xl mx-auto">พร้อมที่จะเริ่มโปรเจกต์ใหม่กับเราหรือไม่? มาคุยกันเลย!</p>
             </div>
-
-            <div class="mt-16">
-                <div class="max-w-lg mx-auto">
-                    <div class="relative">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-accent-500 rounded-3xl blur opacity-30"></div>
-                        <div class="relative bg-dark-800 shadow-xl rounded-2xl p-8 border border-dark-700">
-                            <form id="contact-form" class="space-y-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-300">ชื่อ</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="name" id="name" class="bg-dark-700 shadow-sm focus:ring-brand-500 focus:border-brand-500 block w-full sm:text-sm border-dark-600 rounded-lg p-3 border text-white transition-all duration-200">
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-300">อีเมล</label>
-                                    <div class="mt-1">
-                                        <input type="email" name="email" id="email" class="bg-dark-700 shadow-sm focus:ring-brand-500 focus:border-brand-500 block w-full sm:text-sm border-dark-600 rounded-lg p-3 border text-white transition-all duration-200">
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="message" class="block text-sm font-medium text-gray-300">ข้อความ</label>
-                                    <div class="mt-1">
-                                        <textarea id="message" name="message" rows="4" class="bg-dark-700 shadow-sm focus:ring-brand-500 focus:border-brand-500 block w-full sm:text-sm border-dark-600 rounded-lg p-3 border text-white transition-all duration-200"></textarea>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-dark-900 bg-gradient-to-r from-brand-400 to-accent-400 hover:from-brand-500 hover:to-accent-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all duration-300 transform hover:scale-105 glow">
-                                        ส่งข้อความ
-                                    </button>
-                                </div>
-                            </form>
-                            <div id="form-success" class="mt-4 hidden">
-                                <div class="rounded-md bg-green-900/30 p-4 border border-green-700">
-                                    <div class="flex">
-                                        <div class="flex-shrink-0">
-                                            <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm font-medium text-green-400">
-                                                ส่งข้อความสำเร็จ! เราจะติดต่อกลับโดยเร็วที่สุด
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="card-hover bg-white p-10 rounded-3xl shadow-xl">
+                    <h3 class="text-3xl font-bold mb-8 text-gradient">ข้อมูลติดต่อ</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-center group">
+                            <div class="text-4xl mr-6 group-hover:scale-110 transition-transform">📍</div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-xl">ที่อยู่</p>
+                                <p class="text-gray-600 text-lg">123 ถนนสุขุมวิท กรุงเทพฯ 10110</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group">
+                            <div class="text-4xl mr-6 group-hover:scale-110 transition-transform">📞</div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-xl">โทรศัพท์</p>
+                                <p class="text-gray-600 text-lg">02-123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group">
+                            <div class="text-4xl mr-6 group-hover:scale-110 transition-transform">✉️</div>
+                            <div>
+                                <p class="font-bold text-gray-800 text-xl">อีเมล</p>
+                                <p class="text-gray-600 text-lg">hello@mywebsite.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="bg-gradient-to-r from-brand-900 to-accent-900 py-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full grid-pattern"></div>
-        <div class="absolute top-0 left-0 w-full h-full">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-accent-500/20 rounded-full blur-3xl"></div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                    <span class="block">พร้อมที่จะเริ่มต้นแล้วหรือยัง?</span>
-                    <span class="block text-brand-300">เริ่มต้นใช้งาน GitHub Pages วันนี้</span>
-                </h2>
-                <div class="mt-8 flex justify-center">
-                    <div class="inline-flex rounded-full shadow">
-                        <a href="#" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-dark-900 bg-gradient-to-r from-brand-400 to-accent-400 hover:from-brand-500 hover:to-accent-500 md:py-4 md:text-lg md:px-10 transition-all duration-300 transform hover:scale-105 glow">
-                            เริ่มต้นใช้งานฟรี
-                            <svg class="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </a>
-                    </div>
+                <div class="card-hover bg-white p-10 rounded-3xl shadow-xl">
+                    <form class="space-y-8" onsubmit="handleSubmit(event)">
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-2xl p-6 mb-8">
+                            <p class="text-yellow-800 text-lg">📝 <strong>Demo Form:</strong> นี่เป็นแบบฟอร์มตัวอย่าง ข้อมูลจะไม่ถูกส่งจริง</p>
+                        </div>
+                        <div>
+                            <label class="block text-lg font-bold text-gray-700 mb-3">ชื่อ</label>
+                            <input type="text" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all text-lg" placeholder="กรอกชื่อของคุณ">
+                        </div>
+                        <div>
+                            <label class="block text-lg font-bold text-gray-700 mb-3">อีเมล</label>
+                            <input type="email" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all text-lg" placeholder="กรอกอีเมลของคุณ">
+                        </div>
+                        <div>
+                            <label class="block text-lg font-bold text-gray-700 mb-3">ข้อความ</label>
+                            <textarea rows="5" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all text-lg" placeholder="เขียนข้อความของคุณที่นี่"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform shadow-2xl">
+                            🚀 ส่งข้อความ
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark-950 border-t border-dark-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="flex justify-center md:justify-start">
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 flex items-center justify-center">
-                            <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                        </div>
-                        <span class="ml-3 text-xl font-bold text-white">DevHub<span class="text-brand-400">Pages</span></span>
-                    </div>
+    <footer class="bg-gradient-to-br from-gray-900 to-purple-900 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="text-3xl font-bold mb-6 text-gradient">✨ MyWebsite</div>
+                    <p class="text-gray-300 text-lg leading-relaxed">สร้างประสบการณ์ดิจิทัลที่น่าประทับใจและมีประสิทธิภาพ</p>
                 </div>
-                <div class="mt-8 md:mt-0">
-                    <div class="flex justify-center md:justify-end space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors duration-300">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors duration-300">
-                            <span class="sr-only">Twitter</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors duration-300">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                            </svg>
-                        </a>
+                <div>
+                    <h4 class="font-bold mb-6 text-xl">บริการ</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">พัฒนาเว็บไซต์</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">แอปพลิเคชัน</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">ออกแบบ UI/UX</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-xl">บริษัท</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">เกี่ยวกับเรา</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">ทีมงาน</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors text-lg hover:scale-105 inline-block">ข่าวสาร</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-xl">ติดตาม</h4>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-3xl hover:text-purple-400 transition-all duration-300 hover:scale-125 floating-animation">📘</a>
+                        <a href="#" class="text-3xl hover:text-purple-400 transition-all duration-300 hover:scale-125 floating-animation" style="animation-delay: -1s;">📷</a>
+                        <a href="#" class="text-3xl hover:text-purple-400 transition-all duration-300 hover:scale-125 floating-animation" style="animation-delay: -2s;">🐦</a>
+                        <a href="#" class="text-3xl hover:text-purple-400 transition-all duration-300 hover:scale-125 floating-animation" style="animation-delay: -3s;">💼</a>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 border-t border-dark-800 pt-8 md:flex md:items-center md:justify-between">
-                <div class="flex justify-center md:justify-start space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-brand-400 text-sm transition-colors duration-300">หน้าหลัก</a>
-                    <a href="#features" class="text-gray-400 hover:text-brand-400 text-sm transition-colors duration-300">คุณสมบัติ</a>
-                    <a href="#about" class="text-gray-400 hover:text-brand-400 text-sm transition-colors duration-300">เกี่ยวกับ</a>
-                    <a href="#contact" class="text-gray-400 hover:text-brand-400 text-sm transition-colors duration-300">ติดต่อ</a>
-                </div>
-                <p class="mt-8 text-base text-gray-400 md:mt-0">
-                    &copy; 2023 DevHubPages. สงวนลิขสิทธิ์ทั้งหมด.
-                </p>
+            <div class="border-t border-gray-700 mt-12 pt-12 text-center text-gray-400">
+                <p class="text-lg">&copy; 2024 MyWebsite. สงวนลิขสิทธิ์ทุกประการ</p>
             </div>
         </div>
+        
+        <!-- Floating background elements -->
+        <div class="absolute top-10 left-10 text-6xl opacity-10 floating-animation">⭐</div>
+        <div class="absolute top-20 right-20 text-4xl opacity-15 floating-animation" style="animation-delay: -2s;">✨</div>
+        <div class="absolute bottom-20 left-20 text-5xl opacity-10 floating-animation" style="animation-delay: -4s;">💫</div>
     </footer>
 
     <script>
         // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuButton.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'968599f0c14945ab',t:'MTc1NDA1NDA5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Add loading animation
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = '⏳ กำลังส่ง...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('🎉 ขอบคุณสำหรับข้อความของคุณ! นี่เป็นแบบฟอร์มตัวอย่าง ในการใช้งานจริงจะต้องมีระบบส่งอีเมลที่เซิร์ฟเวอร์');
+                button.innerHTML = originalText;
+                button.disabled = false;
+                event.target.reset();
+            }, 2000);
+        }
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-2xl', 'bg-white/95');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('shadow-2xl', 'bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-animation');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add typing effect restart on scroll
+        const heroTitle = document.querySelector('.typing-animation');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroTitle.style.animation = 'none';
+                    setTimeout(() => {
+                        heroTitle.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
+                    }, 100);
+                }
+            });
+        });
+
+        heroObserver.observe(heroTitle);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'968616aa83f0f82a',t:'MTc1NDA1OTIwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
